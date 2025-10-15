@@ -31,9 +31,10 @@ class SerialReader(threading.Thread):
                         if part.startswith('!'):
                             part = part[1:]
                             over_threshold.append(True)
+                        else:
+                            over_threshold.append(False)
                         try:
                             currents.append(float(part))
-                            over_threshold.append(False)
                         except ValueError:
                             currents.append(0.0)
                     if len(currents) == 4:
